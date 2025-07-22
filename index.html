@@ -385,18 +385,19 @@
         /* para tapar la parte de abajo del formulario y el mensaje que aparece de Google Form no ha autorizado este formulario */
         .iframe-container {
             max-width: 640px;
-            height: 700px;  /* Aún más bajo */
+            height: 720px;
             overflow: hidden;
             border-radius: 5px;
             margin: 0 auto;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            -webkit-mask-image: linear-gradient(to bottom, black 90%, transparent 100%);
+            mask-image: linear-gradient(to bottom, black 90%, transparent 100%);
         }
 
         .iframe-container iframe {
             width: 100%;
-            height: 780px;
+            height: 800px;
             border: none;
-            margin-top: -20px;  /* Empujar más hacia arriba */
         }
 
         /* Opcional: Añadir un degradado en la parte inferior para disimular */
