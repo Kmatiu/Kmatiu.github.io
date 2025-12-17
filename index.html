@@ -3,19 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boda de Juan de la Cruz y Teresa</title>
+    <title>Juan & Teresa - 25 Abril 2026</title>
     <style>
-        /* Variables para facilitar personalización */
         :root {
-            --color-primary: #b88a6f;
-            --color-secondary: #f5f0eb;
-            --color-text: #4a4a4a;
-            --color-highlight: #d9bba9;
-            --font-main: 'Playfair Display', Georgia, serif;
-            --font-secondary: 'Montserrat', Arial, sans-serif;
+            --color-primary: #d4a373;
+            --color-dark: #2d2d2d;
+            --color-light: #faf8f5;
+            --color-accent: #8b7355;
+            --font-heading: 'Cormorant Garamond', serif;
+            --font-body: 'Montserrat', sans-serif;
         }
 
-        /* Estilos generales */
         * {
             margin: 0;
             padding: 0;
@@ -23,407 +21,501 @@
         }
 
         body {
-            font-family: var(--font-secondary);
-            color: var(--color-text);
+            font-family: var(--font-body);
+            color: var(--color-dark);
             line-height: 1.6;
-            background-color: var(--color-secondary);
             overflow-x: hidden;
         }
 
-        h1, h2, h3 {
-            font-family: var(--font-main);
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
+                        url('/novios100.png') center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero-content {
+            z-index: 2;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-family: var(--font-heading);
+            font-size: 5rem;
+            font-weight: 400;
             margin-bottom: 20px;
-            color: var(--color-primary);
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
-        h1 {
-            font-size: 3rem;
-            margin-top: 20px;
+        .hero .ampersand {
+            font-size: 6rem;
+            display: block;
+            margin: 20px 0;
+            font-style: italic;
         }
 
-        h2 {
-            font-size: 2rem;
-            padding-bottom: 10px;
-            border-bottom: 1px solid var(--color-highlight);
-        }
-
-        h3 {
+        .hero .date {
             font-size: 1.5rem;
+            letter-spacing: 5px;
+            font-weight: 300;
             margin-top: 30px;
         }
 
-        p {
-            margin-bottom: 20px;
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
         }
 
-        a {
-            color: var(--color-primary);
+        .scroll-indicator::after {
+            content: '↓';
+            font-size: 2rem;
+            color: white;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        nav.hidden {
+            transform: translateY(-100%);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 40px;
+            flex-wrap: wrap;
+            padding: 0 20px;
+        }
+
+        nav a {
             text-decoration: none;
+            color: var(--color-dark);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 500;
             transition: color 0.3s;
         }
 
-        a:hover {
-            color: var(--color-highlight);
+        nav a:hover {
+            color: var(--color-primary);
+        }
+
+        /* Section Base */
+        section {
+            padding: 100px 20px;
+            scroll-margin-top: 80px;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
         }
 
-        /* Header & Nav */
-        header {
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
             text-align: center;
-            padding: 40px 0;
-            background-color: white;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 60px;
+            color: var(--color-accent);
+            font-weight: 400;
         }
 
-        .names {
-            font-size: 4rem;
-            margin-bottom: 10px;
+        /* Welcome Section */
+        #bienvenida {
+            background: var(--color-light);
+            text-align: center;
         }
 
-        .date {
-            font-size: 1.5rem;
+        #bienvenida p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .date-highlight {
+            display: inline-block;
+            background: white;
+            padding: 20px 40px;
+            margin-top: 30px;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .date-highlight strong {
+            color: var(--color-primary);
+            font-size: 1.2rem;
+        }
+
+        /* Our Story */
+        #nosotros {
+            background: white;
+        }
+
+        .story-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-top: 60px;
+        }
+
+        .story-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .story-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
             margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
         }
 
-        nav {
-            display: flex;
-            justify-content: center;
-            padding: 20px 0;
-            background-color: white;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        .story-item h3 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--color-accent);
         }
 
-        nav ul {
-            display: flex;
-            list-style: none;
-            flex-wrap: wrap;
-            justify-content: center;
+        /* Timeline */
+        #ceremonias {
+            background: var(--color-light);
         }
 
-        nav ul li {
-            margin: 0 15px;
-        }
-
-        nav ul li a {
-            font-weight: 600;
-            padding: 5px 10px;
-            border-radius: 3px;
-            transition: background-color 0.3s;
-        }
-
-        nav ul li a:hover {
-            background-color: var(--color-highlight);
-            color: white;
-        }
-
-        /* Secciones */
-        section {
-            padding: 60px 0;
-            scroll-margin-top: 80px;
-        }
-
-        section:nth-child(odd) {
-            background-color: white;
-        }
-
-        .intro {
-            text-align: center;
+        .timeline-container {
             max-width: 800px;
             margin: 0 auto;
+            padding-top: 40px;
         }
 
-        .feature {
+        .timeline-item {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            margin: 40px 0;
-        }
-
-        .feature-text {
-            flex: 1;
-            min-width: 300px;
-            padding: 20px;
-        }
-
-        .feature-image {
-            flex: 1;
-            min-width: 300px;
-            height: 400px;
-            background-color: var(--color-highlight);
-            background-size: cover;
-            background-position: center;
-        }
-
-        /* Ceremonias y horarios */
-        .timeline {
+            gap: 40px;
+            margin-bottom: 60px;
             position: relative;
-            max-width: 800px;
-            margin: 40px auto;
         }
 
-        .timeline::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            width: 2px;
-            background-color: var(--color-primary);
-            transform: translateX(-50%);
-        }
-
-        .event {
-            position: relative;
-            margin-bottom: 50px;
-        }
-
-        .event-content {
-            width: 45%;
-            padding: 20px;
-            background-color: white;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        .event:nth-child(odd) .event-content {
-            margin-left: auto;
-        }
-
-        .event-time {
-            font-weight: bold;
+        .timeline-time {
+            min-width: 120px;
+            text-align: right;
+            font-size: 2rem;
+            font-family: var(--font-heading);
             color: var(--color-primary);
-            margin-bottom: 10px;
+            padding-top: 5px;
         }
 
-        .event::after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: var(--color-primary);
-            border-radius: 50%;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
+        .timeline-content {
+            flex: 1;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
         }
 
-        /* Ubicación */
-        .map-container {
-            height: 400px;
-            margin: 30px 0;
+        .timeline-content h3 {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--color-accent);
         }
 
-        .map-container iframe {
+        .timeline-content a {
+            color: var(--color-primary);
+            text-decoration: underline;
+        }
+
+        /* Location */
+        #ubicacion {
+            background: white;
+        }
+
+        .location-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .map-wrapper {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            height: 450px;
+        }
+
+        .map-wrapper iframe {
             width: 100%;
             height: 100%;
             border: none;
-            border-radius: 5px;
         }
 
-        /* Confirmación */
-        .form-container {
-            max-width: 600px;
-            margin: 0 auto;
+        .location-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
-        form {
-            background-color: white;
-            padding: 30px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        .form-group {
+        .location-info h3 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
             margin-bottom: 20px;
+            color: var(--color-accent);
         }
 
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-
-        input, select, textarea {
+        .location-image {
             width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 3px;
-            font-family: var(--font-secondary);
-        }
-
-        textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
-
-        button {
-            padding: 12px 25px;
-            background-color: var(--color-primary);
-            color: white;
-            border: none;
-            border-radius: 3px;
-            cursor: pointer;
-            font-family: var(--font-secondary);
-            font-size: 1rem;
-            transition: background-color 0.3s;
-        }
-
-        button:hover {
-            background-color: var(--color-highlight);
-        }
-
-        /* Galería */
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
             margin-top: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
         }
 
-        .gallery-item {
-            height: 250px;
-            background-color: var(--color-highlight);
-            background-size: cover;
-            background-position: center;
-            border-radius: 5px;
-            transition: transform 0.3s;
+        /* RSVP */
+        #confirmacion {
+            background: var(--color-light);
         }
 
-        .gallery-item:hover {
-            transform: scale(1.03);
-        }
-
-        /* Regalos */
-        .gifts {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .bank-details {
-            background-color: white;
-            padding: 20px;
-            border-radius: 5px;
-            margin-top: 30px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 30px 0;
-            background-color: var(--color-primary);
-            color: white;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
-            
-            h2 {
-                font-size: 1.5rem;
-            }
-            
-            .names {
-                font-size: 2.5rem;
-            }
-            
-            .timeline::before {
-                left: 30px;
-            }
-            
-            .event-content {
-                width: 85%;
-                margin-left: 60px !important;
-            }
-            
-            .event::after {
-                left: 30px;
-            }
-            
-            .feature-image, .feature-text {
-                flex: 100%;
-            }
-            
-            nav ul li {
-                margin: 0 8px;
-            }
-        }
-
-        /* Animaciones */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .animate {
-            animation: fadeIn 1s ease-out;
-        }
-
-        /* Mensaje de confirmación */
-        #confirmation-message {
-            display: none;
-            margin-top: 20px;
-            padding: 15px;
-            background-color: #dff0d8;
-            border: 1px solid #d6e9c6;
-            color: #3c763d;
-            border-radius: 4px;
-        }
-
-        /* para tapar la parte de abajo del formulario y el mensaje que aparece de Google Form no ha autorizado este formulario */
-        .iframe-container {
-            max-width: 640px;
-            height: 720px;
+        .form-wrapper {
+            max-width: 700px;
+            margin: 40px auto 0;
+            background: white;
+            border-radius: 15px;
             overflow: hidden;
-            border-radius: 5px;
-            margin: 0 auto;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            -webkit-mask-image: linear-gradient(to bottom, black 90%, transparent 100%);
-            mask-image: linear-gradient(to bottom, black 90%, transparent 100%);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .form-header {
+            background: var(--color-primary);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .form-header h3 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .iframe-container {
+            height: 750px;
+            overflow: hidden;
+            -webkit-mask-image: linear-gradient(to bottom, black 92%, transparent 100%);
+            mask-image: linear-gradient(to bottom, black 92%, transparent 100%);
         }
 
         .iframe-container iframe {
             width: 100%;
-            height: 800px;
+            height: 850px;
             border: none;
         }
 
-        /* Opcional: Añadir un degradado en la parte inferior para disimular */
-        .iframe-container::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 30px;
-            background: linear-gradient(transparent, var(--color-secondary));
-            pointer-events: none;
+        /* Gallery */
+        #fotos {
+            background: white;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .gallery-item {
+            height: 350px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Gifts */
+        #regalos {
+            background: var(--color-light);
+            text-align: center;
+        }
+
+        .gift-box {
+            max-width: 600px;
+            margin: 40px auto;
+            background: white;
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .gift-box h3 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: var(--color-accent);
+        }
+
+        .bank-info {
+            background: var(--color-light);
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 30px;
+            text-align: left;
+        }
+
+        .bank-info p {
+            margin-bottom: 15px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--color-dark);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        footer .names {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        footer .date {
+            font-size: 1.2rem;
+            letter-spacing: 3px;
+            margin-bottom: 30px;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero .ampersand {
+                font-size: 4rem;
+            }
+
+            .story-grid,
+            .location-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-item {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .timeline-time {
+                text-align: left;
+            }
+
+            nav ul {
+                gap: 20px;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero .ampersand {
+                font-size: 3rem;
+            }
+
+            nav ul {
+                gap: 15px;
+            }
+
+            nav a {
+                font-size: 0.75rem;
+            }
+
+            section {
+                padding: 60px 20px;
+            }
+        }
+
+        /* Fade in animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1 class="names">JUAN DE LA CRUZ SEGURA ARTERO <br> & <br> TERESA GORDEJUELA ARRIETA</h1>
-            <p class="date">25 / ABRIL / 2026</p>
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="hero-content">
+            <h1>
+                JUAN DE LA CRUZ
+                <span class="ampersand">&</span>
+                TERESA
+            </h1>
+            <p class="date">25 • ABRIL • 2026</p>
         </div>
-    </header>
+        <div class="scroll-indicator"></div>
+    </div>
 
-    <nav>
+    <!-- Navigation -->
+    <nav id="navbar">
         <ul>
             <li><a href="#bienvenida">Bienvenida</a></li>
             <li><a href="#nosotros">Nosotros</a></li>
@@ -435,322 +527,254 @@
         </ul>
     </nav>
 
-    <main>
-        <section id="bienvenida">
-            <div class="container">
-                <div class="intro animate">
-                    <h2>¡Nos casamos!</h2>
-                    <p>
-                        Con alegría y emoción les invitamos a compartir con nosotros el día que uniremos nuestras vidas. Será un honor contar con vuestra presencia en este momento tan especial.
-                    </p>
-                    <p>
-                        <strong>Fecha:</strong> 25 de Abril de 2026<br>
-                        <strong>Lugar:</strong> Iglesia de San Saturnino, Pamplona
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <section id="nosotros">
-            <div class="container">
-                <h2>Nuestra Historia</h2>
-                <div class="feature">
-                    <div class="feature-text animate">
-                        <h3>Cómo nos conocimos</h3>
-                        <p>
-                            Aquí puedes poner un texto sobre cómo os conocisteis. Cuáles fueron las primeras impresiones, dónde fue, cuándo fue, y por qué ese momento fue especial para vosotros.
-                        </p>
-                    </div>
-                    <div class="feature-image" style="background-image: url('/novios100.png');"></div>
-                </div>
-                
-                <div class="feature">
-                    <div class="feature-image" style="background-image: url('/novios800.png');"></div>
-                    <div class="feature-text animate">
-                        <h3>La propuesta</h3>
-                        <p>
-                            En esta sección puedes contar cómo fue la pedida de mano. El lugar, las emociones que sintieron, si fue sorpresa o algo planeado por ambos, y lo significativo que fue ese momento en vuestra relación.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="ceremonias">
-            <div class="container">
-                <h2>La Celebración</h2>
-                <p class="intro">
-                    Nos encantaría que nos acompañarais en todos los momentos de este día tan especial. A continuación os detallamos cómo será la jornada.
+    <!-- Welcome Section -->
+    <section id="bienvenida">
+        <div class="container">
+            <h2 class="section-title fade-in">¡Nos Casamos!</h2>
+            <p class="fade-in">
+                Con alegría y emoción les invitamos a compartir con nosotros el día que uniremos nuestras vidas. 
+                Será un honor contar con vuestra presencia en este momento tan especial.
+            </p>
+            <div class="date-highlight fade-in">
+                <p>
+                    <strong>Fecha:</strong> 25 de Abril de 2026<br>
+                    <strong>Lugar:</strong> Iglesia de San Saturnino, Pamplona
                 </p>
-                
-                <div class="timeline">
-                    <div class="event animate">
-                        <div class="event-content">
-                            <div class="event-time">12:00 h</div>
-                            <h3>Ceremonia</h3>
-                            <p>Celebraremos nuestra unión en la <a href="https://iglesiasansaturnino.com/" >Iglesia de San Saturnino</a>. Te esperamos puntual para compartir este momento único.</p>
-                        </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story -->
+    <section id="nosotros">
+        <div class="container">
+            <h2 class="section-title fade-in">Nuestra Historia</h2>
+            <div class="story-grid">
+                <div class="story-item fade-in">
+                    <img src="/novios100.png" alt="Cómo nos conocimos" class="story-image">
+                    <h3>Cómo nos conocimos</h3>
+                    <p>
+                        Aquí puedes poner un texto sobre cómo os conocisteis. Cuáles fueron las primeras impresiones, 
+                        dónde fue, cuándo fue, y por qué ese momento fue especial para vosotros.
+                    </p>
+                </div>
+                <div class="story-item fade-in">
+                    <img src="/novios800.png" alt="La propuesta" class="story-image">
+                    <h3>La propuesta</h3>
+                    <p>
+                        En esta sección puedes contar cómo fue la pedida de mano. El lugar, las emociones que sintieron, 
+                        si fue sorpresa o algo planeado por ambos, y lo significativo que fue ese momento en vuestra relación.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ceremonies -->
+    <section id="ceremonias">
+        <div class="container">
+            <h2 class="section-title fade-in">La Celebración</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto 40px;" class="fade-in">
+                Nos encantaría que nos acompañarais en todos los momentos de este día tan especial. 
+                A continuación os detallamos cómo será la jornada.
+            </p>
+            <div class="timeline-container">
+                <div class="timeline-item fade-in">
+                    <div class="timeline-time">12:00</div>
+                    <div class="timeline-content">
+                        <h3>Ceremonia</h3>
+                        <p>Celebraremos nuestra unión en la <a href="https://iglesiasansaturnino.com/" target="_blank">Iglesia de San Saturnino</a>. 
+                        Te esperamos puntual para compartir este momento único.</p>
                     </div>
-                    
-                    <div class="event animate">
-                        <div class="event-content">
-                            <div class="event-time">14:00 h</div>
-                            <h3>Cóctel de Bienvenida</h3>
-                            <p>Tras la ceremonia, disfrutaremos de un cóctel de bienvenida en los jardines de las <a href="https://www.monjardin.es/" >Bodegas Castillo de Monjardín</a>.</p>
-                        </div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-time">14:00</div>
+                    <div class="timeline-content">
+                        <h3>Cóctel de Bienvenida</h3>
+                        <p>Tras la ceremonia, disfrutaremos de un cóctel de bienvenida en los jardines de las 
+                        <a href="https://www.monjardin.es/" target="_blank">Bodegas Castillo de Monjardín</a>.</p>
                     </div>
-                    
-                    <div class="event animate">
-                        <div class="event-content">
-                            <div class="event-time">15:30 h</div>
-                            <h3>Banquete</h3>
-                            <p>Compartiremos un delicioso banquete preparado especialmente para la ocasión.</p>
-                        </div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-time">15:30</div>
+                    <div class="timeline-content">
+                        <h3>Banquete</h3>
+                        <p>Compartiremos un delicioso banquete preparado especialmente para la ocasión.</p>
                     </div>
-                    
-                    <div class="event animate">
-                        <div class="event-content">
-                            <div class="event-time">19:00 h</div>
-                            <h3>Baile y Celebración</h3>
-                            <p>¡La fiesta continuará! Música, baile y diversión hasta que el cuerpo aguante.</p>
-                        </div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-time">19:00</div>
+                    <div class="timeline-content">
+                        <h3>Baile y Celebración</h3>
+                        <p>¡La fiesta continuará! Música, baile y diversión hasta que el cuerpo aguante.</p>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="ubicacion">
-            <div class="container">
-                <h2>Ubicación</h2>
-                <p class="intro">
-                    La celebración tendrá lugar en Bodegas Castillo de Monjardín. Os dejamos toda la información para llegar sin problemas.
-                </p>
-                <div class="map-container">
-                    <!-- Reemplazar con las coordenadas correctas en el src -->
+    <!-- Location -->
+    <section id="ubicacion">
+        <div class="container">
+            <h2 class="section-title fade-in">Ubicación</h2>
+            <div class="location-grid">
+                <div class="map-wrapper fade-in">
                     <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5871.139693163819!2d-2.102246!3d42.628078!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd50739f3e4e9c55%3A0x9693ca22719ff461!2sBODEGAS%20CASTILLO%20DE%20MONJARDIN%20SA!5e0!3m2!1ses!2ses!4v1747761961511!5m2!1ses!2ses" allowfullscreen></iframe>
-                    <!--iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5871.139693163819!2d-2.102246!3d42.628078!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd50739f3e4e9c55%3A0x9693ca22719ff461!2sBODEGAS%20CASTILLO%20DE%20MONJARDIN%20SA!5e0!3m2!1ses!2ses!4v1747761961511!5m2!1ses!2ses" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe-->
-                    <!--iframe src="https://www.google.com/maps/dir//BODEGAS+CASTILLO+DE+MONJARDIN+SA+CALLE+VI%C3%91A+RELLENADA,+S-N+31242+Villamayor+de+Monjard%C3%ADn+Navarra/@42.6280782,-2.1022456,16z/data=!4m8!4m7!1m0!1m5!1m1!1s0xd50739f3e4e9c55:0x9693ca22719ff461!2m2!1d-2.1022548!2d42.6280752?entry=ttu&g_ep=EgoyMDI1MDUxNS4wIKXMDSoASAFQAw%3D%3D" allowfullscreen></iframe-->
                 </div>
-                <div class="feature">
-                    <div class="feature-text">
-                        <h3>Cómo llegar</h3>
-                        <p>
-                            <strong>Dirección:</strong> <a href="https://maps.app.goo.gl/tsuGfHUFXh2becn5A" >Viña Rellanada S/N 31242 Villamayor de Monjardín (NAVARRA)</a><br>
-                                                        
-                            <strong>En coche:</strong> Está a 30 min de Pamplona y 30 min de Logroño en la A12<br>
-                                                        <br>
-                            <strong>En transporte público:</strong> Indicaciones para transporte público si aplica.
-                        </p>
-                    </div>
-                    <div class="feature-image" style="background-image: url('/bodega.png');"></div>
-                </div>
-            </div>
-        </section>
-
-<!--
-        <section id="confirmacion">
-            <div class="container">
-                <h2>Confirmación de Asistencia</h2>
-                <p class="intro">
-                    Nos haría mucha ilusión contar con vosotros. Para ayudarnos con la organización, os agradeceríamos que confirmarais vuestra asistencia antes del [fecha límite].
-                </p>
-                <div class="form-container">
-                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSftL7-cM0ULz9ysBP_K6_UioO_VSf0OFU50pkLdX5tZYOlNhg/viewform?embedded=true" width="640" height="800" frameborder="0" marginheight="0" marginwidth="0">Cargando…</iframe>
-                </div>
-            </div>
-        </section>
-
--->
-        <section id="confirmacion">
-            <div class="container">
-                <h2>Confirmación de Asistencia</h2>
-                <p class="intro">
-                    Nos haría mucha ilusión contar con vosotros. Para ayudarnos con la organización, os agradeceríamos que confirmarais vuestra asistencia antes del 1 de marzo de 2026.
-                </p>
-                <div class="iframe-container">
-                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSftL7-cM0ULz9ysBP_K6_UioO_VSf0OFU50pkLdX5tZYOlNhg/viewform?embedded=true" 
-                            frameborder="0" 
-                            marginheight="0" 
-                            marginwidth="0">Cargando…</iframe>
-                </div>
-            </div>
-        </section>
-
-<!--
-        <section id="confirmacion">
-            <div class="container">
-                <h2>Confirmación de Asistencia</h2>
-                <p class="intro">
-                    Nos haría mucha ilusión contar con vosotros. Para ayudarnos con la organización, os agradeceríamos que confirmarais vuestra asistencia antes del [fecha límite].
-                </p>
-                <div class="form-container">
-                    <form id="rsvp-form" action="https://formspree.io/f/xnndrlqd" method="POST">
-                        <div class="form-group">
-                            <label for="name">Nombre completo*</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email">Correo electrónico*</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="phone">Teléfono</label>
-                            <input type="tel" id="phone" name="phone">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="attendance">¿Asistirás?*</label>
-                            <select id="attendance" name="attendance" required>
-                                <option value="">Selecciona una opción</option>
-                                <option value="Si, asistiré">Sí, asistiré</option>
-                                <option value="No podré asistir">No podré asistir</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="guests">Número de acompañantes</label>
-                            <input type="number" id="guests" name="guests" min="0" value="0">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="dietary">Restricciones alimentarias o alergias</label>
-                            <textarea id="dietary" name="dietary"></textarea>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message">Mensaje para los novios</label>
-                            <textarea id="message" name="message"></textarea>
-                        </div>
-                        
-                        <button type="submit">Enviar confirmación</button>
-                    </form>
-                    <div id="confirmation-message">
-                        ¡Gracias por confirmar tu asistencia! Hemos recibido correctamente tu información.
-                    </div>
-                </div>
-            </div>
-        </section>
--->
-        <section id="fotos">
-            <div class="container">
-                <h2>Nuestras Fotos</h2>
-                <p class="intro">
-                    Algunos momentos especiales que hemos compartido juntos a lo largo de nuestra relación.
-                </p>
-                <div class="gallery">
-                    <div class="gallery-item" style="background-image: url('/Juan.png');"></div>
-                    <div class="gallery-item" style="background-image: url('/Teresa.png');"></div>
-                    <div class="gallery-item" style="background-image: url('/novios200.png');"></div>
-                    <div class="gallery-item" style="background-image: url('/novios300.png');"></div>
-                    <div class="gallery-item" style="background-image: url('/novios400.png');"></div>
-                    <div class="gallery-item" style="background-image: url('/novios500.png');"></div>
-                    <div class="gallery-item" style="background-image: url('/novios600.png');"></div>
-                    <div class="gallery-item" style="background-image: url('/novios700.png');"></div>
-
-                </div>
-            </div>
-        </section>
-
-        <section id="regalos">
-            <div class="container">
-                <h2>Lista de Regalos</h2>
-                <div class="gifts">
+                <div class="location-info fade-in">
+                    <h3>Cómo llegar</h3>
                     <p>
-                        Vuestra presencia en nuestro día especial es el mejor regalo. Sin embargo, si queréis contribuir de alguna forma a nuestra nueva vida juntos, os dejamos aquí algunos detalles.
+                        <strong>Dirección:</strong><br>
+                        <a href="https://maps.app.goo.gl/tsuGfHUFXh2becn5A" target="_blank">
+                            Viña Rellanada S/N<br>
+                            31242 Villamayor de Monjardín<br>
+                            Navarra
+                        </a>
                     </p>
-                    <div class="bank-details">
-                        <h3>Contribución para nuestra luna de miel</h3>
-                        <p>
-                            Si deseáis hacernos un regalo, podéis contribuir a nuestra luna de miel con un ingreso en la siguiente cuenta:
-                        </p>
-                        <p>
-                            <strong>Titular:</strong> JUAN DE LA CRUZ SEGURA ARTERO Y TERESA GORDEJUELA ARRIETA<br>
-                            <strong>IBAN:</strong> ES00 0000 0000 0000 0000 0000<br>
-                            <strong>Entidad:</strong> Nombre del banco<br>
-                            <strong>Concepto:</strong> Tu nombre + Regalo boda
-                        </p>
-                    </div>
+                    <p>
+                        <strong>En coche:</strong><br>
+                        Está a 30 min de Pamplona y 30 min de Logroño por la A12
+                    </p>
+                    <img src="/bodega.png" alt="Bodegas Castillo de Monjardín" class="location-image">
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
+    <!-- RSVP -->
+    <section id="confirmacion">
+        <div class="container">
+            <h2 class="section-title fade-in">Confirmación de Asistencia</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto;" class="fade-in">
+                Nos haría mucha ilusión contar con vosotros. Para ayudarnos con la organización, 
+                os agradeceríamos que confirmarais vuestra asistencia antes del 1 de marzo de 2026.
+            </p>
+            <div class="form-wrapper fade-in">
+                <div class="form-header">
+                    <h3>Confirma tu asistencia</h3>
+                    <p>Completa el formulario con tus datos</p>
+                </div>
+                <div class="iframe-container">
+                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSftL7-cM0ULz9ysBP_K6_UioO_VSf0OFU50pkLdX5tZYOlNhg/viewform?embedded=true"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="fotos">
+        <div class="container">
+            <h2 class="section-title fade-in">Nuestras Fotos</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto 40px;" class="fade-in">
+                Algunos momentos especiales que hemos compartido juntos a lo largo de nuestra relación.
+            </p>
+            <div class="gallery-grid">
+                <div class="gallery-item fade-in">
+                    <img src="/Juan.png" alt="Juan">
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="/Teresa.png" alt="Teresa">
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="/novios200.png" alt="Nosotros">
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="/novios300.png" alt="Nosotros">
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="/novios400.png" alt="Nosotros">
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="/novios500.png" alt="Nosotros">
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="/novios600.png" alt="Nosotros">
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="/novios700.png" alt="Nosotros">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gifts -->
+    <section id="regalos">
+        <div class="container">
+            <h2 class="section-title fade-in">Lista de Regalos</h2>
+            <div class="gift-box fade-in">
+                <p>
+                    Vuestra presencia en nuestro día especial es el mejor regalo. Sin embargo, 
+                    si queréis contribuir de alguna forma a nuestra nueva vida juntos, 
+                    os dejamos aquí algunos detalles.
+                </p>
+                <div class="bank-info">
+                    <h3>Contribución para nuestra luna de miel</h3>
+                    <p>
+                        <strong>Titular:</strong><br>
+                        Juan de la Cruz Segura Artero y<br>
+                        Teresa Gordejuela Arrieta
+                    </p>
+                    <p>
+                        <strong>IBAN:</strong> ES00 0000 0000 0000 0000 0000<br>
+                        <strong>Entidad:</strong> Nombre del banco<br>
+                        <strong>Concepto:</strong> Tu nombre + Regalo boda
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
         <div class="container">
-            <p>JUAN DE LA CRUZ SEGURA ARTERO & TERESA GORDEJUELA ARRIETA</p>
-            <p>25 / 04 / 2026</p>
+            <p class="names">Juan de la Cruz & Teresa</p>
+            <p class="date">25 • 04 • 2026</p>
             <p>¡Gracias por compartir este día tan especial con nosotros!</p>
         </div>
     </footer>
 
     <script>
-        // Script para hacer scroll suave a las secciones
+        // Smooth scroll
         document.querySelectorAll('nav a').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
-                const targetId = this.getAttribute('href');
-                document.querySelector(targetId).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth' });
             });
         });
 
-        // Gestión del formulario
-        document.getElementById('rsvp-form').addEventListener('submit', function(e) {
-            e.preventDefault();
+        // Hide/show navbar on scroll
+        let lastScroll = 0;
+        const navbar = document.getElementById('navbar');
+        
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
             
-            // Recoger los datos del formulario
-            const formData = new FormData(this);
-            const formObject = {};
-            formData.forEach((value, key) => {
-                formObject[key] = value;
-            });
+            if (currentScroll <= 100) {
+                navbar.classList.remove('hidden');
+            } else if (currentScroll > lastScroll && currentScroll > 500) {
+                navbar.classList.add('hidden');
+            } else {
+                navbar.classList.remove('hidden');
+            }
             
-            // Aquí iría la lógica para enviar los datos por correo electrónico
-            // En este ejemplo, simplemente mostraremos un mensaje de confirmación
-            console.log('Datos del formulario:', formObject);
-            
-            // Mostrar mensaje de confirmación
-            document.getElementById('confirmation-message').style.display = 'block';
-            document.getElementById('rsvp-form').style.display = 'none';
-            
-            // Para una implementación real, aquí iría el código para enviar los datos a un servidor
-            // o a un servicio de email como FormSpree, Netlify Forms, etc.
+            lastScroll = currentScroll;
         });
 
-        // Añadir animaciones al hacer scroll
-        const animateOnScroll = () => {
-            const elements = document.querySelectorAll('.animate');
-            
-            elements.forEach(element => {
-                const elementPosition = element.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
-                
-                if (elementPosition < windowHeight - 100) {
-                    element.style.opacity = '1';
-                    element.style.transform = 'translateY(0)';
-                }
-            });
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
         };
 
-        // Inicializar las animaciones
-        window.addEventListener('scroll', animateOnScroll);
-        window.addEventListener('load', animateOnScroll);
-
-        // Establecer elementos como no visibles inicialmente
-        document.addEventListener('DOMContentLoaded', () => {
-            const elements = document.querySelectorAll('.animate');
-            elements.forEach(element => {
-                element.style.opacity = '0';
-                element.style.transform = 'translateY(20px)';
-                element.style.transition = 'opacity 0.5s ease-out, transform 0.5s ease-out';
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
             });
-            
-            // Ejecutar la animación inicial después de cargar la página
-            setTimeout(animateOnScroll, 300);
-        });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
