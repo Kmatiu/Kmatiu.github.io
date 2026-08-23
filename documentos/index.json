@@ -1,0 +1,39 @@
+{
+  "documentos": [
+    {
+      "archivo": "parque-warner-mapa.jpg",
+      "titulo": "Parque Warner - Mapa",
+      "tipo": "mapa",
+      "dia": 9
+    },
+    {
+      "archivo": "captura-de-pantalla-2026-08-23-a-las-16-03-57.png",
+      "titulo": "Plano del casco histórico de Salamanca",
+      "tipo": "mapa",
+      "dia": 2
+    },
+    {
+      "enlace": "https://www.turismoasturias.es/es/organiza-tu-viaje/como-llegar/acceso-a-lagos",
+      "titulo": "Horarios, tarifas y fechas del plan de transporte a los Lagos",
+      "tipo": "web",
+      "dia": 3
+    },
+    {
+      "enlace": "https://www.cangasaventura.com/actividades/descenso-del-sella/",
+      "titulo": "Web de CangasAventura - Descenso del Sella",
+      "tipo": "web",
+      "dia": 4
+    },
+    {
+      "enlace": "https://www.cangasaventura.com/actividades/motos-de-agua-en-ribadesella/",
+      "titulo": "Motos de agua y costa oriental",
+      "tipo": "web",
+      "dia": 5
+    },
+    {
+      "archivo": "plano-segovia-turismo-marzo-2026-compressed.pdf",
+      "titulo": "Plano del casco histórico de Segovia",
+      "dia": 8
+    }
+  ]
+}
