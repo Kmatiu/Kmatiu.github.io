@@ -34,6 +34,12 @@
       "archivo": "plano-segovia-turismo-marzo-2026-compressed.pdf",
       "titulo": "Plano del casco histórico de Segovia",
       "dia": 8
+    },
+    {
+      "archivo": "peninsula-magdalena-0.png",
+      "titulo": "Plano península Magdalena",
+      "tipo": "mapa",
+      "dia": 6
     }
   ]
 }
